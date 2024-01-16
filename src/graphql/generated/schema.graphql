@@ -1,0 +1,122 @@
+type Query {
+  books: [Book]
+  signIn(
+    """Sign in input"""
+    input: SignInInput!
+  ): GqlSignInResponse
+  authorisedActions: [GqlAuthorisedAction]
+}
+
+"""A book"""
+type Book {
+  """Id of the book"""
+  id: ID!
+
+  """Title of the book"""
+  title: String
+
+  """Description of the book"""
+  description: String
+
+  """Author id of the book"""
+  author_id: Int
+}
+
+"""Sign in response"""
+type GqlSignInResponse {
+  """User object"""
+  user: GqlUser
+
+  """Access token"""
+  accessToken: String
+
+  """Refresh token"""
+  refreshToken: String
+}
+
+"""Graphql User"""
+type GqlUser {
+  """Name of user"""
+  name: String
+
+  """Username of user"""
+  username: String
+
+  """Id of user"""
+  id: Int
+}
+
+"""Sign in input"""
+input SignInInput {
+  """Usranme of the user"""
+  username: String
+
+  """Usranme of the user"""
+  password: String
+}
+
+"""Authorised Action"""
+type GqlAuthorisedAction {
+  """Id of the action"""
+  id: Int
+
+  """Query of the action"""
+  body: String
+
+  """Variables of the action"""
+  variables: String
+
+  """Key of the action"""
+  key: String
+
+  """Typename of the action"""
+  typename: String
+
+  """User id of the action creator"""
+  user_id: Int
+}
+
+type Mutation {
+  createBook(
+    """Input fields to create book"""
+    input: CreateBookInput!
+  ): Book
+  signUp(
+    """Input fields to sign up"""
+    input: SingUpInput!
+  ): SignUp
+  signOut: SignOut
+}
+
+"""Create book input"""
+input CreateBookInput {
+  """Title of the book"""
+  title: String
+
+  """Short description of the book"""
+  description: String
+}
+
+"""Sign Up"""
+type SignUp {
+  """Message text"""
+  message: String
+}
+
+"""Sign up input"""
+input SingUpInput {
+  """Username of the user"""
+  username: String
+
+  """Password of the user"""
+  password: String
+
+  """Name of the user"""
+  name: String
+}
+
+"""Sign Out"""
+type SignOut {
+  """Message text"""
+  message: String
+}
