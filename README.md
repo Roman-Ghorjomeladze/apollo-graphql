@@ -1,6 +1,8 @@
 # Description
 Graphql API developed with Apollo server (version 4). It is using Prisma for communication with DB. Currently the data is stored in file system as the database dialect selected is sqlite. Database structure is generated from migrations that are placed in *root*/prisma/migrations. 
 
+You need to populate .env file until you start the project. You can copy the variable names from .env.example file and put random strings as value
+
 # How to start
 install -> migrate -> build -> start
 ```bash
